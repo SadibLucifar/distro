@@ -14,6 +14,16 @@ jobs:
       - name: ⬇️ Checkout
         uses: actions/checkout@v3
 
+      # 🧹 FREE UP 25–30GB DISK (same as TWRP builder)
+      - name: 🧹 Cleanup runner
+        uses: rokibhasansagar/slimhub_actions@main
+
+      # 💾 ADD 24GB SWAP (same as TWRP builder)
+      - name: 💾 Add 24GB swap
+        uses: pierotofy/set-swap-space@master
+        with:
+          swap-size-gb: 24
+
       - name: 📁 Create dirs
         run: mkdir -p links .backup
 
@@ -54,4 +64,3 @@ jobs:
             echo "$(date): keepalive"
             sleep 30
           done
-          
